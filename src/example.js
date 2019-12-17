@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Card from "./components/Card";
+import "./AppStyles.css";
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
 //
@@ -18,8 +14,8 @@ import {
 export default function BasicExample() {
   return (
     <Router>
-      <div>
-        <ul>
+      <div className="app">
+        {/* <ul>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -29,9 +25,9 @@ export default function BasicExample() {
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
-        </ul>
+        </ul> */}
 
-        <hr />
+        {/* <hr /> */}
 
         {/*
           A <Switch> looks through all its children <Route>
@@ -61,8 +57,9 @@ export default function BasicExample() {
 
 function Home() {
   return (
-    <div>
-      <h2>Home</h2>
+    <div className="app">
+      <Card color="blue" />
+      <Card color="red" />
     </div>
   );
 }
