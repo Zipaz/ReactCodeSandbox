@@ -12,6 +12,10 @@ export default class Card extends React.Component {
   }
 
   componentDidMount() {
+    this.getPersonDetails();
+  }
+
+  getPersonDetails = () => {
     if (!this.props.person) {
       fetch("https://randomuser.me/api/", {
         method: "GET",
@@ -23,8 +27,23 @@ export default class Card extends React.Component {
         .then(res => {
           this.setState({ person: res.results[0] });
         });
+    } else {
+      this.setState({ person: this.props.person });
     }
-  }
+  };
+
+  handleClick = () => {
+    if (this.props.onClick) {
+      this.props.onClick(this.state.person);
+      this.getPersonDetails();
+      this.setState({
+        color: colorGen(),
+        skills: skillGen()
+      });
+    } else {
+      alert("GREAT CHOICE!");
+    }
+  };
 
   render() {
     return (
@@ -41,7 +60,7 @@ export default class Card extends React.Component {
           </div>
 
           <div className="skillsCol center">
-            <span style={{ "text-decoration": "underline" }}>Skills</span>
+            <span style={{ textDecoration: "underline" }}>Skills</span>
             {this.state.skills.map(skill => {
               return (
                 <li style={{ listStyleType: "none" }} key={skill}>
@@ -58,6 +77,7 @@ export default class Card extends React.Component {
                 justifySelf: "center",
                 alignSelf: "center"
               }}
+              onClick={() => this.handleClick()}
             >
               <span>Select Candidate</span>
             </button>

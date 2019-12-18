@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Card from "./components/Card";
+import BottomBar from "./components/BottomBar";
 import "./AppStyles.css";
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -40,12 +41,12 @@ export default function BasicExample() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/about">
+          {/* <Route path="/about">
             <About />
           </Route>
           <Route path="/dashboard">
             <Dashboard />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </Router>
@@ -56,10 +57,29 @@ export default function BasicExample() {
 // in your app.
 
 function Home() {
+  const personDef = {
+    name: {
+      first: "Jason",
+      last: "Joliet"
+    },
+    picture: {
+      large: ""
+    }
+  };
+
+  const [candidates, setCandidates] = useState([]);
+  const skillDef = ["HTML/CSS", "AngularJS", "Java/Spring", "Git"];
+  const removeCandidate = user => {
+    let upd = [...candidates];
+    upd.push(user);
+    setCandidates(upd);
+  };
+
   return (
     <div className="row app" style={{ flex: 1 }}>
-      <Card style={{ flex: 1 }} color="" />
-      <Card style={{ flex: 1 }} color="red" onHover />
+      <Card style={{ flex: 1 }} color="" skills={skillDef} person={personDef} />
+      <Card style={{ flex: 1 }} color="" onHover onClick={removeCandidate} />
+      <BottomBar candidateList={candidates} />
     </div>
   );
 }
