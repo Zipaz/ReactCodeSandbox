@@ -31,6 +31,13 @@ img {
   color: white;
 }
 
+.swapName:hover:before {
+  content: "Remove Candidate";
+}
+.swapName:hover span {
+  display: none;
+}
+
 .imgCol {
   flex: 1;
 }

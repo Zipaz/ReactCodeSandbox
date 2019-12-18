@@ -59,7 +59,7 @@ function Home() {
   return (
     <div className="row app" style={{ flex: 1 }}>
       <Card style={{ flex: 1 }} color="" />
-      <Card style={{ flex: 1 }} color="red" />
+      <Card style={{ flex: 1 }} color="red" onHover />
     </div>
   );
 }
