@@ -1,14 +1,46 @@
 .app {
-  display: flex;
-  flex-direction: row;
   width: 100vw;
   height: 100vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  /* flex: 1; */
 }
 
 body {
   margin: 0;
 }
-
+img {
+  max-width: max-content;
+}
 .cards {
   flex: 1;
+}
+.card-container {
+  text-shadow: 0 0 10px black;
+  color: white;
+}
+
+.imgCol {
+  flex: 1;
+}
+.nameCol {
+  flex: 1;
+}
+.skillsCol {
+  flex: 1;
+}
+
+.center {
+  text-align: center;
 }

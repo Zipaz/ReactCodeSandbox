@@ -57,9 +57,9 @@ export default function BasicExample() {
 
 function Home() {
   return (
-    <div className="app">
-      <Card color="blue" />
-      <Card color="red" />
+    <div className="row app" style={{ flex: 1 }}>
+      <Card style={{ flex: 1 }} color="" />
+      <Card style={{ flex: 1 }} color="red" />
     </div>
   );
 }
